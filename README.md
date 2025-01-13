@@ -148,24 +148,39 @@ a centralized and automated way to track index sizes, making it easier to manage
   Then Navigate to the Discovery section → Click Create discovery rule:
   
   For HOT:
+  
   Name: Directory Discovery (/HOT)
+  
   Key: custom.dir.discovery[/HOT]
+  
   Type: Zabbix agent
+  
   Update interval: 3600 (or 1 hour).
+  
   Apply
 
   For COLD:
+  
   Name: Directory Discovery (/COLD)
+  
   Key: custom.dir.discovery[/COLD]
+  
   Type: Zabbix agent
+  
   Update interval: 3600 (or 1 hour).
+  
   Apply
 
   For Frozen:
+  
   Name: Directory Discovery (/FROZEN)
+  
   Key: custom.dir.discovery[/FROZEN]
+  
   Type: Zabbix agent
+  
   Update interval: 3600 (or 1 hour).
+  
   Apply
 
   2-Add Item Prototypes:
@@ -173,27 +188,42 @@ a centralized and automated way to track index sizes, making it easier to manage
   Inside the discovery rule, create an item prototype:
 
   For HOT:
+  
   Name: {#SUBDIR} in HOT
+  
   Key: custom.dir.size[/HOT/{#SUBDIR}]
+  
   Type: Zabbix agent
+  
   Type of information: Numeric (unsigned)
+  
   Units: B
 
 
   For COLD:
+  
   Name: {#SUBDIR} in COLD
+  
   Key: custom.dir.size[/COLD/{#SUBDIR}]
+  
   Type: Zabbix agent
+  
   Type of information: Numeric (unsigned)
+  
   Units: B
 
 
 
   For FROZEN:
+
   Name: {#SUBDIR} in FROZEN
+  
   Key: custom.dir.size[/FROZEN/{#SUBDIR}]
+  
   Type: Zabbix agent
+  
   Type of information: Numeric (unsigned)
+  
   Units: B
 
   3-Add Trigger Prototypes:
@@ -202,6 +232,7 @@ a centralized and automated way to track index sizes, making it easier to manage
 
   
   FOR HOT:
+  
   Name: {#SUBDIR} size exceeds 500GB
   
   Expression:
@@ -210,6 +241,7 @@ a centralized and automated way to track index sizes, making it easier to manage
 
 
   FOR COLD:
+  
   Name: {#SUBDIR} size exceeds 500GB
   
   Expression:
@@ -218,6 +250,7 @@ a centralized and automated way to track index sizes, making it easier to manage
 
 
   FOR FROZEN:
+  
   Name: {#SUBDIR} size exceeds 500GB
   
   Expression:
@@ -228,6 +261,7 @@ a centralized and automated way to track index sizes, making it easier to manage
 
 
 # Step 6: Verify and Test
+  
   1-Check if Zabbix discovers the directories:
 
     zabbix_agent2 -t custom.dir.discovery[/HOT]
