@@ -1,6 +1,3 @@
-# Splunk-Index-Monitoring-With-Zabbix
-Splunk Index Monitoring With Zabbix
-
 # Monitoring Splunk Indexes with Zabbix
 
 This project integrates Splunk index monitoring into Zabbix using a custom script and Low-Level Discovery (LLD). The goal is to monitor the size of individual indexes (directories) within the Splunk storage tiers: HOT, COLD, and FROZEN. The solution provides real-time insights into the storage usage of each index, enabling proactive management and preventing potential storage overflows or performance issues.
