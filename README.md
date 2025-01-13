@@ -142,12 +142,12 @@ a centralized and automated way to track index sizes, making it easier to manage
 
 # Step 4: Configure Low-Level Discovery (LLD) Template in Zabbix
 
-  1-Create a Discovery Rule:
+  # 1-Create a Discovery Rule:
   
   Go to Data Collection → Templates → Create template (e.g. splunk_index_size) .
   Then Navigate to the Discovery section → Click Create discovery rule:
   
-  For HOT:
+  ## For HOT:
   
   Name: Directory Discovery (/HOT)
   
@@ -159,7 +159,7 @@ a centralized and automated way to track index sizes, making it easier to manage
   
   Apply
 
-  For COLD:
+  ## For COLD:
   
   Name: Directory Discovery (/COLD)
   
@@ -171,7 +171,7 @@ a centralized and automated way to track index sizes, making it easier to manage
   
   Apply
 
-  For Frozen:
+  ## For Frozen:
   
   Name: Directory Discovery (/FROZEN)
   
@@ -183,11 +183,12 @@ a centralized and automated way to track index sizes, making it easier to manage
   
   Apply
 
-  2-Add Item Prototypes:
+  
+  # 2-Add Item Prototypes:
 
   Inside the discovery rule, create an item prototype:
 
-  For HOT:
+  ## For HOT:
   
   Name: {#SUBDIR} in HOT
   
@@ -200,7 +201,7 @@ a centralized and automated way to track index sizes, making it easier to manage
   Units: B
 
 
-  For COLD:
+  ## For COLD:
   
   Name: {#SUBDIR} in COLD
   
@@ -214,7 +215,7 @@ a centralized and automated way to track index sizes, making it easier to manage
 
 
 
-  For FROZEN:
+  ## For FROZEN:
 
   Name: {#SUBDIR} in FROZEN
   
@@ -226,12 +227,13 @@ a centralized and automated way to track index sizes, making it easier to manage
   
   Units: B
 
-  3-Add Trigger Prototypes:
+  
+  # 3-Add Trigger Prototypes:
 
   Create a trigger prototype to alert if the directory size exceeds a threshold:
 
   
-  FOR HOT:
+  ## FOR HOT:
   
   Name: {#SUBDIR} size exceeds 500GB
   
@@ -240,7 +242,7 @@ a centralized and automated way to track index sizes, making it easier to manage
     last(/splunk_index_size/custom.dir.size[/HOST/{#SUBDIR}])>500000000000
 
 
-  FOR COLD:
+  ## FOR COLD:
   
   Name: {#SUBDIR} size exceeds 500GB
   
@@ -249,7 +251,7 @@ a centralized and automated way to track index sizes, making it easier to manage
      last(/splunk_index_size/custom.dir.size[/COLD/{#SUBDIR}])>500000000000
 
 
-  FOR FROZEN:
+  ## FOR FROZEN:
   
   Name: {#SUBDIR} size exceeds 500GB
   
