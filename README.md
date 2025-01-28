@@ -110,6 +110,10 @@ a centralized and automated way to track index sizes, making it easier to manage
   
     apt install -y jq
 
+  6-TEST 
+ 
+    ./monitor_dir_sizes.sh discover /HOT
+
 #  Step 2: Configure Zabbix Agent
 
   1-Edit the Zabbix agent configuration:
