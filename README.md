@@ -114,6 +114,10 @@ a centralized and automated way to track index sizes, making it easier to manage
  
     ./monitor_dir_sizes.sh discover /HOT
 
+    ./monitor_dir_sizes.sh size /HOT/INDEX_NAME
+
+    
+
 #  Step 2: Configure Zabbix Agent
 
   1-Edit the Zabbix agent configuration:
