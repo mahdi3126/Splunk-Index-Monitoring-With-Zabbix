@@ -177,6 +177,8 @@ a centralized and automated way to track index sizes, making it easier to manage
   3-Restart the Zabbix agent:
   
     systemctl restart zabbix-agent2
+    OR
+    systemctl restart zabbix-agent
 
   4-Test the configuration to ensure it works:
 
