@@ -166,6 +166,8 @@ a centralized and automated way to track index sizes, making it easier to manage
   1-Edit the Zabbix agent configuration:
 
       nano /etc/zabbix/zabbix_agent2.conf
+      OR
+      nano /etc/zabbix/zabbix_agentd.conf
   
   2-Add the following lines for custom UserParameters:
   
