@@ -184,7 +184,7 @@ a centralized and automated way to track index sizes, making it easier to manage
 
     zabbix_agent2 -t custom.dir.discovery[/HOT]
 
-				zabbix_agentd -t custom.dir.discovery[/HOT]
+    zabbix_agentd -t custom.dir.discovery[/HOT]
 
 
 #  Step 3: Prepare Splunk Directories
