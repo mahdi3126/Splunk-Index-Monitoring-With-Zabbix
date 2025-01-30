@@ -1,0 +1,60 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 178ee4263786487b9b05111e6d846ae6
+      name: Splunk
+  templates:
+    - uuid: adb4bf8dcb4e43d3a0cd02c57298cee7
+      template: splunk_index_size
+      name: splunk_index_size
+      groups:
+        - name: Splunk
+      discovery_rules:
+        - uuid: 7d95ccb53e48405da700c4b9f866664d
+          name: 'Directory Discovery (/COLD)'
+          key: 'custom.dir.discovery[/COLD]'
+          delay: 1h
+          item_prototypes:
+            - uuid: 6da0d8ed613440deb3d1e37996a732ef
+              name: '{#SUBDIR} in COLD'
+              key: 'custom.dir.size[/COLD/{#SUBDIR}]'
+              units: B
+              tags:
+                - tag: COLD
+              trigger_prototypes:
+                - uuid: fc7b2e8df9664fbab7fb4b14d8e0b2a0
+                  expression: 'last(/splunk_index_size/custom.dir.size[/COLD/{#SUBDIR}])>500000000000'
+                  name: '{#SUBDIR} size in COLD exceeds 500GB'
+                  priority: AVERAGE
+        - uuid: 6c73a99344234c8caf76571a34425212
+          name: 'Directory Discovery (/FROZEN)'
+          key: 'custom.dir.discovery[/FROZEN]'
+          delay: 1h
+          item_prototypes:
+            - uuid: bb12e7e8dff345a69a22f5ec2fffbda8
+              name: '{#SUBDIR} in FROZEN'
+              key: 'custom.dir.size[/FROZEN/{#SUBDIR}]'
+              units: B
+              tags:
+                - tag: FROZEN
+              trigger_prototypes:
+                - uuid: 592caf637f4047149a53ce213af75ad0
+                  expression: 'last(/splunk_index_size/custom.dir.size[/FROZEN/{#SUBDIR}])>500000000000'
+                  name: '{#SUBDIR} size in FROZEN exceeds 500GB'
+                  priority: WARNING
+        - uuid: 725b8dd6ca5a44078a9d1f09f873c10d
+          name: 'Directory Discovery (/HOT)'
+          key: 'custom.dir.discovery[/HOT]'
+          delay: 1h
+          item_prototypes:
+            - uuid: 780cdccf9e234a8799ecafefda106e47
+              name: '{#SUBDIR} in HOT'
+              key: 'custom.dir.size[/HOT/{#SUBDIR}]'
+              units: B
+              tags:
+                - tag: HOT
+              trigger_prototypes:
+                - uuid: 874c3cdc2a4e4dc384eb0f3c74dd61b8
+                  expression: 'last(/splunk_index_size/custom.dir.size[/HOT/{#SUBDIR}])>800000000000'
+                  name: '{#SUBDIR} size  in HOT exceeds 800GB'
+                  priority: WARNING
